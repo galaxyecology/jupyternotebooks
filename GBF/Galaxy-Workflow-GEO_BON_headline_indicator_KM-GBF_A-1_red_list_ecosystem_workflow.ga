@@ -1,0 +1,366 @@
+{
+    "a_galaxy_workflow": "true",
+    "annotation": "EBV computational workflow for Red List Index Ecosystem indicator computation. This workflow is part of the EBV operationalization pilot led by PNDB Data Terra for France participation to GEO BON.",
+    "comments": [],
+    "creator": [
+        {
+            "class": "Organization",
+            "name": "PNDB"
+        },
+        {
+            "class": "Organization",
+            "name": "Data Terra"
+        },
+        {
+            "class": "Organization",
+            "name": "French BON"
+        }
+    ],
+    "format-version": "0.1",
+    "license": "MIT",
+    "logo_url": "https://geobon.org/wp-content/uploads/2022/08/FrenchBON_banner.jpg",
+    "name": "GEO BON headline indicator KM-GBF A-1 red list ecosystem workflow",
+    "readme": "## Introduction\n\nThis \"EBV computational workflow\" allows a user to compute a GBF A1 headline related indicator concerning Red List Index Ecosystem.\n\n## Inputs\n\nInputs are:\n- A Jupyter Notebook created from \"red-list-ecosystem\" GitHub repository source code accessible (here)[https://github.com/red-list-ecosystem/rle_indices/blob/master/Github_RLIE_script.Rmd]\n- An example input csv dataset coming from the same GitHub repository",
+    "report": {
+        "markdown": "\n# Workflow Execution Report\n\n## Workflow Inputs\n```galaxy\ninvocation_inputs()\n```\n\n## Workflow Outputs\n```galaxy\ninvocation_outputs()\n```\n\n## Workflow\n```galaxy\nworkflow_display()\n```\n"
+    },
+    "steps": {
+        "0": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_text_file_with_recurring_lines/9.5+galaxy2",
+            "errors": null,
+            "id": 0,
+            "input_connections": {},
+            "inputs": [],
+            "label": "Create text file with data input URL",
+            "name": "Create text file",
+            "outputs": [
+                {
+                    "name": "outfile",
+                    "type": "txt"
+                }
+            ],
+            "position": {
+                "left": 0,
+                "top": 176.86169039064075
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_text_file_with_recurring_lines/9.5+galaxy2",
+            "tool_shed_repository": {
+                "changeset_revision": "c41d78ae5fee",
+                "name": "text_processing",
+                "owner": "bgruening",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"token_set\": [{\"__index__\": 0, \"line\": \"https://github.com/red-list-ecosystem/rle_indices/raw/refs/heads/master/Github_example_AmericanForests_RLIE.csv\", \"repeat_select\": {\"repeat_select_opts\": \"user\", \"__current_case__\": 0, \"times\": \"1\"}}], \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "9.5+galaxy2",
+            "type": "tool",
+            "uuid": "e0cf24c3-66d7-4272-81df-31f3cb7f058b",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "1": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_text_file_with_recurring_lines/9.5+galaxy2",
+            "errors": null,
+            "id": 1,
+            "input_connections": {},
+            "inputs": [],
+            "label": "Create text file with jupyter notebook URL",
+            "name": "Create text file",
+            "outputs": [
+                {
+                    "name": "outfile",
+                    "type": "txt"
+                }
+            ],
+            "position": {
+                "left": 43.18328857421875,
+                "top": 346.6116903906408
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_text_file_with_recurring_lines/9.5+galaxy2",
+            "tool_shed_repository": {
+                "changeset_revision": "c41d78ae5fee",
+                "name": "text_processing",
+                "owner": "bgruening",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"token_set\": [{\"__index__\": 0, \"line\": \"https://github.com/galaxyecology/jupyternotebooks/raw/refs/heads/main/GBF/RLIE_RedList_indicator.ipynb\", \"repeat_select\": {\"repeat_select_opts\": \"user\", \"__current_case__\": 0, \"times\": \"1\"}}], \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "9.5+galaxy2",
+            "type": "tool",
+            "uuid": "198f47b5-41a8-454a-b54e-d6a48db9c5fc",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "2": {
+            "annotation": "",
+            "content_id": "lftp",
+            "errors": null,
+            "id": 2,
+            "input_connections": {
+                "urls": {
+                    "id": 0,
+                    "output_name": "outfile"
+                }
+            },
+            "inputs": [],
+            "label": "Download Github_example_AmericanForests_RLIE.csv",
+            "name": "downloads",
+            "outputs": [
+                {
+                    "name": "downloads",
+                    "type": "input"
+                }
+            ],
+            "position": {
+                "left": 272.16668701171875,
+                "top": 106.19503389650012
+            },
+            "post_job_actions": {
+                "ChangeDatatypeActiondownloads": {
+                    "action_arguments": {
+                        "newtype": "txt"
+                    },
+                    "action_type": "ChangeDatatypeAction",
+                    "output_name": "downloads"
+                }
+            },
+            "tool_id": "lftp",
+            "tool_state": "{\"urls\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "4.9.2",
+            "type": "tool",
+            "uuid": "df4a9c01-2beb-4982-939a-73012c7a5c21",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "3": {
+            "annotation": "",
+            "content_id": "lftp",
+            "errors": null,
+            "id": 3,
+            "input_connections": {
+                "urls": {
+                    "id": 1,
+                    "output_name": "outfile"
+                }
+            },
+            "inputs": [],
+            "label": "Download Jupyter Notebook RLIE",
+            "name": "downloads",
+            "outputs": [
+                {
+                    "name": "downloads",
+                    "type": "input"
+                }
+            ],
+            "position": {
+                "left": 403.61669921875,
+                "top": 295.378352988297
+            },
+            "post_job_actions": {
+                "ChangeDatatypeActiondownloads": {
+                    "action_arguments": {
+                        "newtype": "ipynb"
+                    },
+                    "action_type": "ChangeDatatypeAction",
+                    "output_name": "downloads"
+                }
+            },
+            "tool_id": "lftp",
+            "tool_state": "{\"urls\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "4.9.2",
+            "type": "tool",
+            "uuid": "27cc1a9d-1349-4372-9def-421f9b6e8b50",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "4": {
+            "annotation": "",
+            "content_id": "Grep1",
+            "errors": null,
+            "id": 4,
+            "input_connections": {
+                "input": {
+                    "id": 2,
+                    "output_name": "downloads"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Select",
+            "outputs": [
+                {
+                    "name": "out_file1",
+                    "type": "input"
+                }
+            ],
+            "position": {
+                "left": 511.5167236328125,
+                "top": 71.97835909181262
+            },
+            "post_job_actions": {},
+            "tool_id": "Grep1",
+            "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"invert\": \"\", \"keep_header\": false, \"pattern\": \"\\\\w\", \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.0.4",
+            "type": "tool",
+            "uuid": "4baa0c81-42e1-4c87-a1f7-4d6ccbb5fe6d",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "5": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/5.1.0",
+            "errors": null,
+            "id": 5,
+            "input_connections": {
+                "input_list": {
+                    "id": 3,
+                    "output_name": "downloads"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Collapse Collection",
+                    "name": "input_list"
+                }
+            ],
+            "label": null,
+            "name": "Collapse Collection",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "input"
+                }
+            ],
+            "position": {
+                "left": 661,
+                "top": 248.33331298828125
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/5.1.0",
+            "tool_shed_repository": {
+                "changeset_revision": "90981f86000f",
+                "name": "collapse_collections",
+                "owner": "nml",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"filename\": {\"add_name\": false, \"__current_case__\": 1}, \"input_list\": {\"__class__\": \"RuntimeValue\"}, \"one_header\": false, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "5.1.0",
+            "type": "tool",
+            "uuid": "6c76e57d-1ba7-42f8-8512-bde4b045b4d7",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "6": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/5.1.0",
+            "errors": null,
+            "id": 6,
+            "input_connections": {
+                "input_list": {
+                    "id": 4,
+                    "output_name": "out_file1"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Collapse Collection",
+                    "name": "input_list"
+                }
+            ],
+            "label": null,
+            "name": "Collapse Collection",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "input"
+                }
+            ],
+            "position": {
+                "left": 743,
+                "top": 0.0
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/5.1.0",
+            "tool_shed_repository": {
+                "changeset_revision": "90981f86000f",
+                "name": "collapse_collections",
+                "owner": "nml",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"filename\": {\"add_name\": false, \"__current_case__\": 1}, \"input_list\": {\"__class__\": \"RuntimeValue\"}, \"one_header\": false, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "5.1.0",
+            "type": "tool",
+            "uuid": "0abe660e-dab1-49ac-98f8-008309063bbc",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "7": {
+            "annotation": "",
+            "content_id": "interactive_tool_jupyter_notebook",
+            "errors": null,
+            "id": 7,
+            "input_connections": {
+                "mode|ipynb": {
+                    "id": 5,
+                    "output_name": "output"
+                },
+                "user_inputs_0|input_type|input_value": {
+                    "id": 6,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Interactive JupyterLab Notebook",
+                    "name": "mode"
+                }
+            ],
+            "label": null,
+            "name": "Interactive JupyterLab Notebook",
+            "outputs": [
+                {
+                    "name": "output_collection",
+                    "type": "input"
+                },
+                {
+                    "name": "jupyter_notebook",
+                    "type": "ipynb"
+                },
+                {
+                    "name": "output_dataset",
+                    "type": "data"
+                }
+            ],
+            "position": {
+                "left": 948.1666259765625,
+                "top": 139.14550779297377
+            },
+            "post_job_actions": {},
+            "tool_id": "interactive_tool_jupyter_notebook",
+            "tool_state": "{\"__input_ext\": \"input\", \"chromInfo\": \"/opt/galaxy/tool-data/shared/ucsc/chrom/?.len\", \"mode\": {\"mode_select\": \"previous\", \"__current_case__\": 1, \"ipynb\": {\"__class__\": \"ConnectedValue\"}, \"run_it\": true}, \"user_inputs\": [{\"__index__\": 0, \"input_name\": \"rlie\", \"description\": null, \"input_type\": {\"input_type_selector\": \"dataset\", \"__current_case__\": 0, \"input_value\": {\"__class__\": \"ConnectedValue\"}}}], \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.0.2",
+            "type": "tool",
+            "uuid": "00bd2626-e8bc-458e-89e7-f38f002f3f8c",
+            "when": null,
+            "workflow_outputs": [
+                {
+                    "label": "RLIE indices",
+                    "output_name": "output_dataset",
+                    "uuid": "5a0009d8-deca-4dd7-86c7-9ec3b0659bc6"
+                }
+            ]
+        }
+    },
+    "tags": [
+        "EBV",
+        "GBF",
+        "A1",
+        "Headline",
+        "Biodiversity",
+        "Indicator"
+    ],
+    "uuid": "d58c4a73-5aec-430b-8747-da471f8f4873",
+    "version": 10
+}
