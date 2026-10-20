@@ -1,1 +1,1 @@
-A Jupyter Notebook to extract multivolume 7zip archives from InDoRes Dataverse from deffered dataset on a Galaxy history
+A Jupyter Notebook to extract multivolume 7zip archives from InDoRes Dataverse from deffered dataset on a Galaxy history. Barcodrain datasets is reachable at this URL https://data.indores.fr/dataset.xhtml?persistentId=doi:10.48579/PRO/YSWHRV
